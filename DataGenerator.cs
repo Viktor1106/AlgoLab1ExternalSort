@@ -1,11 +1,5 @@
 ﻿using CsvHelper;
-using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab1OuterSort
 {
@@ -21,7 +15,7 @@ namespace Lab1OuterSort
             using (var writer = new StreamWriter($"./{fileName}"))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                var records = GenerateData(10000000); //10000000
+                var records = GenerateData(1000000); //10000000
                 csv.WriteRecords(records);
             }
 

@@ -1,108 +1,74 @@
 ﻿using CsvHelper;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Reactive.Disposables;
-using System.Reflection.PortableExecutable;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab1OuterSort
 {
     internal class Sorter
     {
+        public const int filesCount = 10;
+
+        private readonly List<string> filesBpaths = new List<string> { "b1.csv", "b2.csv", "b3.csv", "b4.csv", "b5.csv", "b6.csv", "b7.csv", "b8.csv", "b9.csv", "b10.csv" };
+        private readonly List<string> filesCpaths = new List<string> { "c1.csv", "c2.csv", "c3.csv", "c4.csv", "c5.csv", "c6.csv", "c7.csv", "c8.csv", "c9.csv", "c10.csv" };
+
         public void Sort(string pathToFileA)
         {
-            const int filesCount = 10;
-            var filesBpaths = new List<string> { "b1.csv", "b2.csv", "b3.csv", "b4.csv", "b5.csv", "b6.csv", "b7.csv", "b8.csv", "b9.csv", "b10.csv" };
-            var filesCpaths = new List<string> { "c1.csv", "c2.csv", "c3.csv", "c4.csv", "c5.csv", "c6.csv", "c7.csv", "c8.csv", "c9.csv", "c10.csv" };
+            
+            WriteFromAtoBfiles(pathToFileA, filesCount, filesBpaths);
 
-            using (var reader = new StreamReader(pathToFileA))
-            using (var A = new CsvReader(reader, CultureInfo.InvariantCulture))
+            string? finalSortedFilePath = null;
+            do
             {
-                var records = A.GetRecords<Record>();
-                Record? previousRecord = null;
+                SortXintoY(filesCount, filesBpaths, filesCpaths);
 
-                using (var Bwriters = CreateWriters(filesBpaths)) {
-                    int writerIndex = 0;
-                    var BwritersArray = Bwriters.OfType<CsvWriter>().ToArray();
-                    WriteHeadersToWriters(Bwriters);
-                    foreach (var record in records)
-                    {
-                        if (!IsSequence(previousRecord, record))
-                            writerIndex = (writerIndex + 1) % filesCount;
-                        BwritersArray[writerIndex].WriteRecord(record);
-                        BwritersArray[writerIndex].NextRecord();
-                        previousRecord = record;
-                    }
+                if (!SecondFileHasRecords(filesCpaths))
+                {
+                    finalSortedFilePath = filesCpaths[0];
+                    break;
                 }
+
+                SortXintoY(filesCount, filesCpaths, filesBpaths);
+            } while (SecondFileHasRecords(filesBpaths)); // check if all files except the first are empty
+
+            try
+            {
+                File.Replace((finalSortedFilePath ?? filesBpaths[0]), pathToFileA, "givenFileInBeforeSortState.csv");
+            }
+            catch (IOException iox)
+            {
+                Console.WriteLine(iox.Message);
             }
 
-            do {
-                using (var Breaders = CreateReaders(filesBpaths))
-            using (var Cwriters = CreateWriters(filesCpaths))
+            CleanUpFiles();
+        }
+
+        private void CleanUpFiles()
+        {
+            foreach (var path in filesBpaths.Concat(filesCpaths))
             {
-                WriteHeadersToWriters(Cwriters); // TODO: maybe move it to CreateWriters?
-                var writers = Cwriters.OfType<CsvWriter>().ToArray();
-
-                var readers = Breaders.OfType<CsvReader>().ToArray();
-                var currentRecords = new Record[filesCount]; // currentRecords[i] - current record from i-th reader
-                for (int i = 0; i < filesCount; i++)
+                try
                 {
-                    var reader = readers[i];
-                    reader.Read();
-                    reader.ReadHeader();
-                    if (reader.Read())
-                        currentRecords[i] = reader.GetRecord<Record>();
+                    File.Delete(path);
                 }
-
-                var writerIndex = 0;
-                do
+                catch (IOException iox)
                 {
-                    var max = currentRecords // won't ever be null because of the condition in while
-                        .Aggregate((r1, r2) =>
-                        {
-                            if (r1 == null) return r2;
-                            if (r2 == null) return r1;
-                            return r1.Key > r2.Key ? r1 : r2;
-                        }); // get max because we need sequences in descending order
-
-                    writers[writerIndex].WriteRecord(max);
-                    writers[writerIndex].NextRecord();
-
-                    UpdateCurrentRecords(currentRecords, readers , max);
-
-                    if (currentRecords.All(r => r == null)) // if all current sequences are finished
-                    {
-                        writerIndex = (writerIndex + 1) % filesCount; //move to the next c file
-                        MoveToNextSequences(currentRecords, readers);
-                    }
-                } while (currentRecords.Any(r => r != null)); // check if there is at least one non-null record
+                    Console.WriteLine(iox.Message);
+                }
             }
+        }
 
-            if (!SecondFileHasRecords(filesCpaths))
-                break;
-
-                using (var Creaders = CreateReaders(filesCpaths))
-            using (var Bwriters = CreateWriters(filesBpaths))
+        private void SortXintoY(int filesCount, List<string> filesXpaths, List<string> filesYpaths)
+        {
+            using (var Xreaders = CreateReaders(filesXpaths))
+            using (var Ywriters = CreateWriters(filesYpaths))
             {
-                WriteHeadersToWriters(Bwriters); // TODO: maybe move it to CreateWriters?
-                var writers = Bwriters.OfType<CsvWriter>().ToArray();
+                WriteHeadersToWriters(Ywriters); // TODO: maybe move it to CreateWriters?
 
-                var readers = Creaders.OfType<CsvReader>().ToArray();
-                var currentRecords = new Record[filesCount]; // currentRecords[i] - current record from i-th reader
-                for (int i = 0; i < filesCount; i++)
-                {
-                    var reader = readers[i];
-                    reader.Read();
-                    reader.ReadHeader();
-                    if (reader.Read())
-                        currentRecords[i] = reader.GetRecord<Record>();
-                }
+                var readers = Xreaders.OfType<CsvReader>().ToArray();
+                var currentRecords = InitHeadsOfReadFiles(filesCount, readers); // currentRecords[i] - current record from i-th reader
+                
 
+                var writers = Ywriters.OfType<CsvWriter>().ToArray();
                 var writerIndex = 0;
                 do
                 {
@@ -126,21 +92,48 @@ namespace Lab1OuterSort
                     }
                 } while (currentRecords.Any(r => r != null)); // check if there is at least one non-null record
             }
-            } while (SecondFileHasRecords(filesBpaths)); // check if all files except the first are empty
-
-            if (CheckIfSorted(filesBpaths[0]))
-            {
-                Console.WriteLine("File sorted successfully");
-            }
-            else
-            {
-                Console.WriteLine("File not sorted");
-            }
-
-            // TODO: THE SAME FOR C FILE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
-        bool CheckIfSorted(string path)
+        private Record[] InitHeadsOfReadFiles(int filesCount, CsvReader[] readers)
+        {
+            Record[] currentRecords = new Record[filesCount];
+            for (int i = 0; i < filesCount; i++)
+            {
+                var reader = readers[i];
+                reader.Read();
+                reader.ReadHeader();
+                if (reader.Read())
+                    currentRecords[i] = reader.GetRecord<Record>();
+            }
+            return currentRecords;
+        }
+
+        private void WriteFromAtoBfiles(string pathToFileA, int filesCount, List<string> filesBpaths)
+        {
+            using (var reader = new StreamReader(pathToFileA))
+            using (var A = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = A.GetRecords<Record>();
+                Record? previousRecord = null;
+
+                using (var Bwriters = CreateWriters(filesBpaths))
+                {
+                    int writerIndex = 0;
+                    var BwritersArray = Bwriters.OfType<CsvWriter>().ToArray();
+                    WriteHeadersToWriters(Bwriters);
+                    foreach (var record in records)
+                    {
+                        if (!IsSequence(previousRecord, record))
+                            writerIndex = (writerIndex + 1) % filesCount;
+                        BwritersArray[writerIndex].WriteRecord(record);
+                        BwritersArray[writerIndex].NextRecord();
+                        previousRecord = record;
+                    }
+                }
+            }
+        }
+
+        public bool CheckIfSorted(string path)
         {
             using (var reader = new StreamReader(path))
             using (var A = new CsvReader(reader, CultureInfo.InvariantCulture))

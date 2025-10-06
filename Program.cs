@@ -1,8 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-using CsvHelper;
-using Lab1OuterSort;
+﻿using Lab1OuterSort;
 using System.Diagnostics;
-using System.Globalization;
 
 Console.WriteLine("Hello, World!");
 
@@ -15,6 +12,15 @@ Sorter sorter = new Sorter();
 sorter.Sort("data.csv");
 stopwatch.Stop();
 Console.WriteLine($"Elapsed time: {stopwatch.Elapsed}");
+
+if (sorter.CheckIfSorted("data.csv"))
+{
+    Console.WriteLine("File sorted successfully.");
+}
+else
+{
+    Console.WriteLine("File not sorted correctly.");
+}
 
 //using (var writer = new StreamWriter("abc.csv"))
 //using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lab1OuterSort")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+747d8b07a77e0d50d38f5a84557396248d8e14d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lab1OuterSort")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lab1OuterSort")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

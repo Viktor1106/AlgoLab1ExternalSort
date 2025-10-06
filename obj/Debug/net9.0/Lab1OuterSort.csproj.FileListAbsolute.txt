@@ -16,3 +16,4 @@ C:\Users\Viktor\Desktop\code_kpi\AlgoLabsYear2Sem1\Lab1OuterSort\bin\Debug\net9.
 C:\Users\Viktor\Desktop\code_kpi\AlgoLabsYear2Sem1\Lab1OuterSort\obj\Debug\net9.0\Lab1OuterSort.csproj.AssemblyReference.cache
 C:\Users\Viktor\Desktop\code_kpi\AlgoLabsYear2Sem1\Lab1OuterSort\obj\Debug\net9.0\Lab1Oute.6F23FF90.Up2Date
 C:\Users\Viktor\Desktop\code_kpi\AlgoLabsYear2Sem1\Lab1OuterSort\bin\Debug\net9.0\System.Reactive.dll
+C:\Users\Viktor\Desktop\code_kpi\AlgoLabsYear2Sem1\Lab1OuterSort\obj\Debug\net9.0\Lab1OuterSort.sourcelink.json
