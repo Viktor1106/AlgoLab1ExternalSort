@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|c:\\users\\viktor\\desktop\\code_kpi\\algolabsyear2sem1\\lab1outersort\\sorter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|solutionrelative:sorter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|c:\\users\\viktor\\desktop\\code_kpi\\algolabsyear2sem1\\lab1outersort\\datagenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|solutionrelative:datagenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|c:\\users\\viktor\\desktop\\code_kpi\\algolabsyear2sem1\\lab1outersort\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|c:\\users\\viktor\\desktop\\code_kpi\\algolabsyear2sem1\\lab1outersort\\record.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|solutionrelative:record.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|c:\\users\\viktor\\desktop\\code_kpi\\algolabsyear2sem1\\lab1outersort\\extensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2C311F-6CE0-4D1B-99BD-CBD719587DAA}|Lab1OuterSort.csproj|solutionrelative:extensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sorter.cs",
+              "DocumentMoniker": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Sorter.cs",
+              "RelativeDocumentMoniker": "Sorter.cs",
+              "ToolTip": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Sorter.cs",
+              "RelativeToolTip": "Sorter.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAQwIQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T06:20:10.077Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T11:46:13.745Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Extensions.cs",
+              "DocumentMoniker": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Extensions.cs",
+              "RelativeDocumentMoniker": "Extensions.cs",
+              "ToolTip": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Extensions.cs",
+              "RelativeToolTip": "Extensions.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T17:00:20.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DataGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\DataGenerator.cs",
+              "RelativeDocumentMoniker": "DataGenerator.cs",
+              "ToolTip": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\DataGenerator.cs",
+              "RelativeToolTip": "DataGenerator.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T16:40:10.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Record.cs",
+              "DocumentMoniker": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Record.cs",
+              "RelativeDocumentMoniker": "Record.cs",
+              "ToolTip": "C:\\Users\\Viktor\\Desktop\\code_kpi\\AlgoLabsYear2Sem1\\Lab1OuterSort\\Record.cs",
+              "RelativeToolTip": "Record.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAowBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T15:49:45.87Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
